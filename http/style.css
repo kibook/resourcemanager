@@ -28,7 +28,7 @@
 	padding: 1em;
 }
 
-.resource.stopped {
+.resource.stopped .resource-info {
 	opacity: 50%;
 }
 
