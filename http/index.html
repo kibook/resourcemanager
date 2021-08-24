@@ -4,12 +4,19 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="style.css">
+		<script src="https://kit.fontawesome.com/5537a772c3.js" crossorigin="anonymous"></script>
 		<script src="script.js"></script>
 	</head>
 	<body>
 		<div id="header">
 			<div id="title">Resource Manager</div>
-			<div id="refresh-button-container">
+			<div id="options">
+				<div id="resource-types">
+					<button id="all-resources" class="filter-button btn btn-dark" enabled="no">All (<span id="total-resources">0</span>)</button>
+					<button id="regular-resources" class="filter-button btn btn-success" enabled="yes">Normal (<span id="num-regular-resources">0</span>)</button>
+					<button id="managed-resources" class="filter-button btn btn-dark" enabled="no">Managed (<span id="num-managed-resources">0</span>)</button>
+					<button id="default-resources" class="filter-button btn btn-dark" enabled="no">Default (<span id="num-default-resources">0</span>)</button>
+				</div>
 				<button id="refresh" class="btn btn-light">Refresh</button>
 			</div>
 		</div>

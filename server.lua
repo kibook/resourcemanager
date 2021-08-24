@@ -49,9 +49,8 @@ local metadataNames = {
 	"repository"
 }
 
--- Get all dependencies for this resource, and all dependencies for those
--- dependencies, and so on. Stopping a dependency anywhere in the chain will
--- cause a crash!
+-- Get all dependencies for a resource, and all dependencies for those
+-- dependencies,and so on.
 local function addDependencies(resource)
 	for i = 0, GetNumResourceMetadata(resource, "dependency") - 1 do
 		local dep = GetResourceMetadata(thisResource, "dependency", i)
@@ -66,10 +65,35 @@ end
 
 -- Determine if resource can be omitted from the list
 local function ignoreResource(resource)
-	return resource == thisResource or internalResources[resource] or defaultResources[resource] or dependencies[resource]
+	return resource == thisResource or internalResources[resource] or dependencies[resource]
 end
 
+-- Get the full chain of dependencies for resourcemanager. Stopping a
+-- dependency anywhere in the chain can cause the server to crash!
 addDependencies(thisResource)
+
+-- Start conditional resources
+Citizen.CreateThread(function()
+	while true do
+		local time = os.date("*t")
+
+		for resource, condition in pairs(config.managedResources) do
+			if condition(time) then
+				if GetResourceState(resource) == "stopped" then
+					print("Starting resource " .. resource)
+					StartResource(resource)
+				end
+			else
+				if GetResourceState(resource) == "started" then
+					print("Stopping resource " .. resource)
+					StopResource(resource)
+				end
+			end
+		end
+
+		Citizen.Wait(60000)
+	end
+end)
 
 SetHttpHandler(exports.httpmanager:createHttpHandler{
 	authorization = users,
@@ -91,7 +115,9 @@ SetHttpHandler(exports.httpmanager:createHttpHandler{
 						name = resourceName,
 						path = GetResourcePath(resourceName),
 						state = GetResourceState(resourceName),
-						metadata = metadata
+						metadata = metadata,
+						isDefaultResource = defaultResources[resourceName],
+						isManagedResource = config.managedResources[resourceName]
 					})
 				end
 			end

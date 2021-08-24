@@ -12,8 +12,15 @@
 	font-size: 20pt;
 }
 
-#refresh-button-container {
-	text-align: right;
+#options {
+	display: flex;
+	gap: 0 1.5em;
+	justify-content: flex-end;
+}
+
+#resource-types {
+	display: flex;
+	gap: 0 0.25em;
 }
 
 #resources {
@@ -22,7 +29,7 @@
 
 .resource {
 	display: grid;
-	grid-template-columns: auto max-content max-content;
+	grid-template-columns: auto repeat(3, max-content);
 	grid-gap: 1vh 1vw;
 	align-items: center;
 	padding: 1em;
