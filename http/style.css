@@ -1,0 +1,44 @@
+@import url('https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css');
+
+#header {
+	display: grid;
+	grid-template-columns: auto auto;
+	background-color: #375a7f;
+	z-index: 1;
+	padding: 1em 2em;
+}
+
+#title {
+	font-size: 20pt;
+}
+
+#refresh-button-container {
+	text-align: right;
+}
+
+#resources {
+	padding: 1em;
+}
+
+.resource {
+	display: grid;
+	grid-template-columns: auto max-content max-content;
+	grid-gap: 1vh 1vw;
+	align-items: center;
+	padding: 1em;
+}
+
+.resource.stopped {
+	opacity: 50%;
+}
+
+.resource-name {
+	font-family: monospace;
+}
+
+.resource-buttons {
+	display: grid;
+	grid-template-columns: repeat(3, max-content);
+	grid-gap: 0.5vh 0.5vw;
+	align-items: end;
+}
