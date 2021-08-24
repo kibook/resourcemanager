@@ -28,6 +28,10 @@
 	padding: 1em;
 }
 
+.resource.stopped {
+	background-color: #252525;
+}
+
 .resource.stopped .resource-info {
 	opacity: 50%;
 }
