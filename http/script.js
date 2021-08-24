@@ -34,7 +34,7 @@ function refreshResources() {
 				titleDiv.className = 'resource-title';
 
 				if (link) {
-					titleDiv.innerHTML = `<a href="${link}">${name} ${version} by ${author}</a>`
+					titleDiv.innerHTML = `<a href="${link}" target="_blank">${name} ${version} by ${author}</a>`
 				} else {
 					titleDiv.innerHTML = `${name} ${version} by ${author}`;
 				}
