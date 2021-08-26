@@ -23,7 +23,7 @@ Resource management utility for FiveM and RedM.
    
    Adjust the path to `permissions.cfg` based on where you installed this resource.
    
-3. Change the default password hash in `users.lua`, and/or add your own users.
+3. Configure authorization in httpmanager if necessary.
 
 4. Restart your server.
 
