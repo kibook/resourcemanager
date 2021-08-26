@@ -96,7 +96,7 @@ Citizen.CreateThread(function()
 end)
 
 SetHttpHandler(exports.httpmanager:createHttpHandler{
-	authorization = users,
+	authorization = config.authorization,
 	routes = {
 		["^/resources$"] = function(req, res, helpers)
 			local resources = {}

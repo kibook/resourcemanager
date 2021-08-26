@@ -11,3 +11,6 @@ config = {}
 --
 config.managedResources = {
 }
+
+-- Realm or user list for HTTP handler authorization
+config.authorization = "default"
