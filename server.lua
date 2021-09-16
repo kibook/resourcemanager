@@ -282,22 +282,22 @@ SetHttpHandler(exports.httpmanager:createHttpHandler{
 
 		["^/start/(.+)$"] = function(req, res, helpers, resource)
 			StartResource(resource)
-			res.sendJson({})
+			res.sendJson{}
 		end,
 
 		["^/stop/(.+)$"] = function(req, res, helpers, resource)
 			safelyStopResource(resource)
-			res.sendJson({})
+			res.sendJson{}
 		end,
 
 		["^/restart/(.+)$"] = function(req, res, helpers, resource)
 			safelyRestartResource(resource)
-			res.sendJson({})
+			res.sendJson{}
 		end,
 
 		["^/refresh$"] = function(req, res, helpers)
 			ExecuteCommand("refresh")
-			res.sendJson({})
+			res.sendJson{}
 		end
 	}
 })
