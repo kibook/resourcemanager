@@ -263,7 +263,17 @@ SetHttpHandler(exports.httpmanager:createHttpHandler{
 					local metadata = {}
 
 					for _, metadataName in ipairs(metadataNames) do
-						metadata[metadataName] = GetResourceMetadata(resourceName, metadataName, 0)
+						local values = {}
+
+						for i = 0, GetNumResourceMetadata(resourceName, metadataName) - 1 do
+							table.insert(values, GetResourceMetadata(resourceName, metadataName, i))
+						end
+
+						if #values < 2 then
+							metadata[metadataName] = values[1]
+						else
+							metadata[metadataName] = values
+						end
 					end
 
 					table.insert(resources, {

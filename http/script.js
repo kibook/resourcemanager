@@ -61,6 +61,10 @@ function updateResources() {
 			let author = resource.metadata.author || '';
 			let link = resource.metadata.url || resource.metadata.repository;
 
+			if (Array.isArray(author)) {
+				author = author.join(', ');
+			}
+
 			let titleDiv = document.createElement('div');
 			titleDiv.className = 'resource-title';
 
