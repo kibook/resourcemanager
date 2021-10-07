@@ -229,11 +229,13 @@ end, true)
 
 -- Start/stop managed resources
 Citizen.CreateThread(function()
+	local onStartup = true
+
 	while true do
 		local time = os.date("*t")
 
 		for resource, condition in pairs(config.managedResources) do
-			if condition(time) then
+			if condition(onStartup, time) then
 				if GetResourceState(resource) == "stopped" then
 					print("Starting resource " .. resource)
 					StartResource(resource)
@@ -245,6 +247,8 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+
+		onStartup = false
 
 		Citizen.Wait(60000)
 	end
