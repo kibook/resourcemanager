@@ -235,12 +235,14 @@ Citizen.CreateThread(function()
 		local time = os.date("*t")
 
 		for resource, condition in pairs(config.managedResources) do
-			if condition(onStartup, time) then
+			local start = condition(onStartup, time)
+
+			if start == true then
 				if GetResourceState(resource) == "stopped" then
 					print("Starting resource " .. resource)
 					StartResource(resource)
 				end
-			else
+			elseif start == false then
 				if GetResourceState(resource) == "started" then
 					print("Stopping resource " .. resource)
 					safelyStopResource(resource)
