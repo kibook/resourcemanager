@@ -20,6 +20,10 @@ config = {}
 -- 		The current server time. This is useful for resources that
 -- 		start/stop at certain times.
 --
+-- If the function returns true, the resource will be started if it is stopped.
+-- If the function returns false, the resource will be stopped if it is started.
+-- Any other return value means nothing will happen.
+--
 config.managedResources = {
 }
 
