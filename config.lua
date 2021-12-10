@@ -25,6 +25,9 @@ config = {}
 -- Any other return value means nothing will happen.
 --
 config.managedResources = {
+	["xmas"] = function(onStartup, time)
+		return time.month == 12 or time.month == 1
+	end,
 }
 
 -- Realm or user list for HTTP handler authorization
