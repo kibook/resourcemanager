@@ -17,12 +17,10 @@ Resource management utility for FiveM and RedM.
 2. Add the following to `server.cfg`:
 
    ```
-   exec resources/[local]/resourcemanager/permissions.cfg
+   exec @resourcemanager/permissions.cfg
    start resourcemanager
    ```
-   
-   Adjust the path to `permissions.cfg` based on where you installed this resource.
-   
+
 3. Configure authorization in httpmanager if necessary.
 
 4. Restart your server.
