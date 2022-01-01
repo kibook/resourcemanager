@@ -26,16 +26,16 @@ config = {}
 --
 config.managedResources = {
 	["xmas"] = function(onStartup, time)
-		return time.month == 12 or time.month == 01
+		return time.month == 12
 	end,
 	["ranchdecaniche"] = function(onStartup, time)
 		if onStartup then
-			return not (time.month == 12 or time.month == 1)
+			return time.month ~= 12
 		end
 	end,
 	["ranchdecaniche-xmas"] = function(onStartup, time)
 		if onStartup then
-			return time.month == 12 or time.month == 1
+			return time.month == 12
 		end
 	end,
 
