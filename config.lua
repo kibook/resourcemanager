@@ -26,7 +26,7 @@ config = {}
 --
 config.managedResources = {
 	["xmas"] = function(onStartup, time)
-		return time.month == 12 or time.month == 1
+		return time.month == 12
 	end,
 }
 
